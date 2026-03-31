@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  font-family: 'Montserrat', serif;
+  font-size: 16px;
+  --crakkle-icon: url('../assets/crakkle.svg');
+  --color-background: #78c79b;
+  --icon-color: #222222;
+  --settings-surface-color: #ffffff;
+  --settings-border-color: #d0d7de;
+  --settings-text-color: #111111;
+  --settings-hover-color: #f5f6f8;
+
+  /* Spacing variables */
+  --vertical-spacing-0-5: 4px;
+  --horizontal-spacing-0-5: 4px;
+  --vertical-spacing-2: 16px;
+  --horizontal-spacing-2: 16px;
+  --vertical-spacing-1-5: 12px;
+  --header-height: 40px;
+  --header-toolbar-height: 50px;
+  --header-padding-x: var(--horizontal-spacing-2);
+  --game-max-width: 500px;
+  --board-width: min(320px, 100vw);
+
+  /* Button styles */
+  --bg-btn-primary: #000000;
+  --text-btn-primary: #ffffff;
+  --sm-btn-bg-color: #e45c5c;
+  --sm-btn-border-color: #aa3636;
+  --sm-btn-text-color: #f8f7f7;
+  --share-btn-color: #57C643;
+  --share-border-color: #47A740;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --board-width: 360px;
+  }
+}
