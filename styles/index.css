@@ -5,11 +5,14 @@
   font-size: 16px;
   --crakkle-icon: url('../assets/crakkle.svg');
   --color-background: #78c79b;
+  --game-color-background: #f6f8fb;
+  --game-text-color: #111111;
   --icon-color: #222222;
   --settings-surface-color: #ffffff;
   --settings-border-color: #d0d7de;
   --settings-text-color: #111111;
   --settings-hover-color: #f5f6f8;
+  --empty-tile-color: #cbcdd1;
 
   /* Spacing variables */
   --vertical-spacing-0-5: 4px;
@@ -21,7 +24,7 @@
   --header-toolbar-height: 50px;
   --header-padding-x: var(--horizontal-spacing-2);
   --game-max-width: 500px;
-  --board-width: min(320px, 100vw);
+  --board-width: min(300px, 100vw);
 
   /* Button styles */
   --bg-btn-primary: #000000;
@@ -37,4 +40,22 @@
   :root {
     --board-width: 360px;
   }
+}
+
+:root[data-theme="dark"] {
+  --game-color-background: #12161c;
+  --game-text-color: #f0f3f8;
+  --settings-surface-color: #1d2630;
+  --settings-border-color: #34475a;
+  --box-border-color: #a3afba;
+  --settings-text-color: #f0f3f8;
+  --settings-hover-color: #253242;
+  --settings-cog-color: #f0f3f8;
+  --empty-tile-color: #4a5664;
+  --empty-peg-color: #212932;
+  --white-peg-border: #c9d5e1;
+  --grey-peg-color: #455365;
+  --grey-peg-border: #424e5d;
+  --sm-btn-text-color: #939292;
+  --sm-btn-border-color: #858585;
 }

@@ -1,0 +1,408 @@
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  background-color: var(--game-color-background);
+  color: var(--game-text-color);
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+}
+
+body.modal-open {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+div {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* Header Section */
+
+header {
+  display: block;
+}
+
+.toolbar-header {
+  width: 100%;
+  height: var(--header-toolbar-height);
+  display: flex;
+  align-items: center;
+}
+
+.toolbar-section {
+  height: 48px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--horizontal-spacing-2);
+  position: relative;
+}
+
+.toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.back-button,
+.how-to-modal,
+.settings-menu {
+  position: relative;
+}
+
+.back-button,
+.settings-cog-button,
+.how-to-question-mark-button {
+  width: 35px;
+  height: 35px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--icon-color);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding: 0;
+}
+
+.back-button {
+  text-decoration: none;
+}
+
+.back-button-icon {
+  width: 35px;
+  height: 35px;
+  display: block;
+  stroke: currentColor;
+}
+
+.settings-cog-icon,
+.how-to-question-mark-icon {
+  width: 25px;
+  height: 25px;
+  display: block;
+}
+
+/* Settings styles */
+
+:root[data-theme="dark"] .settings-cog-icon,
+:root[data-theme="dark"] .how-to-question-mark-icon {
+  filter: brightness(0) invert(1);
+}
+
+.back-button:focus-visible,
+.settings-cog-button:focus-visible,
+.how-to-question-mark-button:focus-visible {
+  outline: 2px solid var(--settings-border-color);
+  outline-offset: 2px;
+}
+
+.how-to-dropdown,
+.settings-dropdown {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(500px, calc(100vw - 32px));
+  background-color: var(--settings-surface-color);
+  border: 1px solid var(--settings-border-color);
+  border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+  color: var(--settings-text-color);
+  z-index: 200;
+  padding: 12px 10px 22px;
+  max-height: min(80dvh, 720px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.how-to-dropdown::-webkit-scrollbar,
+.settings-dropdown::-webkit-scrollbar {
+  display: none;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.settings-close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 28px;
+  height: 28px;
+  border: 0;
+  background: transparent;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding: 0;
+}
+
+.settings-close-icon {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+:root[data-theme="dark"] .settings-close-icon {
+  filter: brightness(0) invert(1);
+}
+
+.settings-close-button:focus-visible {
+  outline: 2px solid var(--settings-border-color);
+  outline-offset: 2px;
+}
+
+.settings-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.settings-option:hover {
+  background: var(--settings-hover-color);
+}
+
+.settings-option-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.settings-option-title {
+  line-height: 1.2;
+}
+
+.settings-option-subtitle {
+  font-size: 0.8rem;
+  line-height: 1.2;
+  opacity: 0.8;
+}
+
+.settings-option input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+}
+
+.settings-link-button {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+}
+
+.how-to-dropdown h2,
+.settings-dropdown h2 {
+  text-align: center;
+  margin: 0 40px 12px;
+  line-height: 1.15;
+}
+
+.settings-link-button:focus-visible,
+.settings-option input[type="checkbox"]:focus-visible {
+  outline: 2px solid var(--settings-border-color);
+  outline-offset: 2px;
+}
+
+.modal-copy {
+  display: grid;
+  gap: 16px;
+  padding: 0 16px 2px;
+  line-height: 1.55;
+}
+
+.modal-copy p {
+  margin: 0;
+}
+
+.modal-intro {
+  max-width: 38ch;
+  font-size: 1rem;
+}
+
+.instruction-section {
+  display: grid;
+  gap: 8px;
+  padding: 12px 14px;
+  border: 1px solid color-mix(in srgb, var(--settings-border-color) 82%, transparent);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--settings-hover-color) 50%, transparent);
+}
+
+.instruction-heading {
+  margin: 0;
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.instruction-list {
+  margin: 0;
+  padding-left: 20px;
+  display: grid;
+  gap: 8px;
+}
+
+.instruction-list li {
+  padding-left: 2px;
+}
+
+.instruction-legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px 12px;
+  margin-top: 4px;
+}
+
+.instruction-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.instruction-tile,
+.instruction-ship-tile {
+  width: 22px;
+  aspect-ratio: 1 / 1;
+  display: inline-flex;
+  box-sizing: border-box;
+  border-radius: 15%;
+  flex: 0 0 auto;
+  vertical-align: text-bottom;
+  margin: 0 4px;
+}
+
+.instruction-tile[data-state="miss"] {
+  border: 2px solid var(--miss-tile-color);
+  background-color: var(--miss-tile-bg-color);
+}
+
+.instruction-tile[data-state="hit"] {
+  border: 2px solid var(--hit-tile-color);
+  background-color: var(--hit-tile-bg-color);
+}
+
+.instruction-ship-tile[data-state="not-found"] {
+  border: 2px solid var(--ship-nf-color);
+  background-color: var(--ship-nf-bg-color);
+}
+
+.instruction-ship-tile[data-state="alive"] {
+  border: 2px solid var(--alive-color);
+  background-color: var(--alive-bg-color);
+}
+
+/* Game Board Styles */
+
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.game-container {
+  position: relative;
+  min-height: 100dvh;
+}
+
+.game-container,
+.game-tile,
+.game-action-button,
+.back-button,
+.settings-cog-button,
+.how-to-question-mark-button,
+.settings-close-button {
+  touch-action: manipulation;
+}
+
+.game-module {
+  width: 100%;
+  max-width: var(--game-max-width);
+  margin: 5px auto 5px;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100dvh - var(--header-toolbar-height) - 10px);
+}
+
+.game-board-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: hidden;
+  margin-bottom: 4px;
+}
+
+.game-board {
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+  grid-gap: 2px;
+  padding: 2px;
+  box-sizing: border-box;
+  width: var(--board-width);
+}
+
+.game-board.is-disabled {
+  pointer-events: none;
+}
+
+.game-row {
+  display: grid;
+  grid-gap: 2px;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.game-tile-container {
+  display: block;
+  perspective: 500px;
+}
+
+.game-tile {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+  box-sizing: border-box;
+  user-select: none;
+  border-radius: 15%;
+  cursor: pointer;
+  transform: scale(1);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transition: transform 140ms ease, box-shadow 140ms ease;
+}
+
+.game-tile[data-state="empty"] {
+  border: 2px solid var(--empty-tile-color);
+  background-color: var(--empty-tile-bg-color);
+}
+
+.game-tile.is-selected {
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.45);
+}
+
